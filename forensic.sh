@@ -89,6 +89,12 @@ comparission () {
 				echo -n "${ico} use_tools [output file]${sig}"
 				read oname
 				cat $sname $dname > $oname
+			elif [ $use_tools == "sudo-show_packets" ]
+			then
+				sudo wireshark
+			elif [ $use_tools == "show_packets" ]
+			then
+				wireshark
 			elif [ $use_tools == "man" ]
 			then
 				echo -e "                              |Forensic tool manuals|      \n" >> man.txt
@@ -99,14 +105,15 @@ comparission () {
 				echo "	> show_hex      | show hex of files    |			" >> man.txt
 				echo "	> show_s        | show strings of files|			" >> man.txt
 				echo "	> extract_finf  | extract hidden files |			" >> man.txt
-				echo "	> hide_finf     | hides files in file  |            " >> man.txt
+				echo "  > hide_finf     | hides files in file  |            " >> man.txt
+				echo "  > show_packets  | analyse network packt|            " >> man.txt
 				echo "	> man           | show manuals         |			" >> man.txt
 				echo "	> back          | go back to main menu |			" >> man.txt
 				echo "	> c             | clear screen         |			" >> man.txt
 				echo "*  c           : used for clearing screen                *" >> man.txt
 				echo "*  q           : used to exit the programm               *" >> man.txt
 				echo "*  man         : show manuals                            *" >> man.txt
-
+				echo "[note]  >sudo show_packets  | sudo analyse network packt[recommended if not root]|            " >> man.txt
 				nano man.txt
 				rm man.txt
 			elif [ $use_tools == "c" ]
@@ -118,7 +125,7 @@ comparission () {
 			fi
 		done
 	
-	elif [ $ef == "install_pakg" ]
+	elif [ $ef == "install_pakg.1" ]
 	then
 		echo -e "\n[installing required packages]\n"
 		apt update
@@ -127,6 +134,10 @@ comparission () {
 		apt install hexedit
 		apt install binutils
 		clear
+	elif [ $ef == "install_pakg.2 ]
+	then
+		echo -e "\n[installing level2 packages]\n"
+		apt install wireshark
 	elif [ $ef == "q" ]
 	then
 		clear
@@ -141,16 +152,19 @@ comparission () {
 		echo "*  install_pakg: used for installing required packages   *" >> man.txt
 		echo "*  use_tools   : used for using forensic tools           *" >> man.txt
 		echo "	> show_exif     | display exif data    |           " >> man.txt
-		echo "	> show_f_in_f   | search hidden files  |           " >> man.txt
+		echo "	> show_finf     | search hidden files  |           " >> man.txt
 		echo "	> show_hex      | show hex of files    |			" >> man.txt
 		echo "	> show_s        | show strings of files|			" >> man.txt
-		echo "	> extract_f_in_f| extract hidden files |			" >> man.txt
+		echo "	> extract_finf  | extract hidden files |			" >> man.txt
+		echo "	> hide_finf     | hides files in file  |            " >> man.txt
+		echo "  > show_packets  | analyse network packt|            " >> man.txt
 		echo "	> man           | show manuals         |			" >> man.txt
 		echo "	> back          | go back to main menu |			" >> man.txt
 		echo "	> c             | clear screen         |			" >> man.txt
 		echo "*  c           : used for clearing screen                *" >> man.txt
 		echo "*  q           : used to exit the programm               *" >> man.txt
 		echo "*  man         : show manuals                            *" >> man.txt
+		echo "[note]  >sudo show_packets  | sudo analyse network packt[recommended if not root]|            " >> man.txt
 
 		nano man.txt
 		rm man.txt

@@ -34,6 +34,7 @@ def toktar_ide():
 			if a == "y":
 				ff = os.popen(run)
 				dfg = ff.read()
+				print("[result]")
 				print(dfg)
 			elif a == "n":
 				continue
